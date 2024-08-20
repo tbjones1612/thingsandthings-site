@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortification</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="box top-left">
+            <h1>thingsandthings.lol</h1>
+        </div>
+
+        <div class="box top-right">
+            <h1>Sortification</h1>
+            <hr>
+        </div>
+
+        <div class="box bottom-left">
+            <p>Manually enter your list items below, separating each on a new line.</p>
+            <div class="ManualListEnter">
+                <textarea id="man-item-input" placeholder="Enter each item on a new line" rows="10"
+                    cols="30"></textarea>
+                <button onclick="sortAlgo()">
+                    <h2>Process List</h2>
+                </button>
+            </div>
+        </div>
+
+        <div class="box bottom-right">
+            <script src="sort.js"></script>
+
+            <div id="output"></div>
+            <div id="comparisoninterface"></div>
+
+        </div>
+    </div>
+</body>
+
+</html>
