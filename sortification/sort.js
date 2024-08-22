@@ -1,4 +1,4 @@
-// Global
+// Global 
 
 let items = []; // init
 let comparisonsMade = 0; // init
