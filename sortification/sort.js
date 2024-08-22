@@ -1,129 +1,171 @@
-let items = [];
-let comparisonsMade = 0;
-let comparisonQueue = [];
-let sortedItems = [];
-let currentComparison = null;
-let history = []; // To keep track of previous states for undo
+// Global
 
-// Function to calculate the number of comparisons for a tournament ranking
-function calculateTournamentComparisons(numItems) {
-    return (numItems - 1) * 2; // Adjusted for the tournament ranking system
+let items = []; // init
+let comparisonsMade = 0; // init
+let sortedItems = []; // init
+let currentComparison = null; // init
+let history = []; // prev states
+let left, right; // binary search bounds
+let currentItem = null; // self explanitory
+let sortingFinished = false; // finished sort flag
+
+// Calculate the estimated max needed comparisons
+function calculateBinaryInsertionComparisons(numItems) {
+    return Math.floor(numItems * Math.log2(numItems));
 }
 
-// Function to start the sorting process
+// Starts the process
 function sortAlgo() {
     const inputText = document.getElementById('man-item-input').value;
-    items = inputText.split('\n').filter(item => item.trim() !== ''); // Get the list items
-    sortedItems = items.slice(); // Clone the items list for sorting
+    items = [...new Set(inputText.split('\n').filter(item => item.trim() !== ''))]; // gets unique  items
+    sortedItems = [];  // clears list
 
     comparisonsMade = 0;
+    history = [];
+    currentItem = null;
+    sortingFinished = false; // clears flag
 
     const numItems = items.length;
-    const numComparisons = calculateTournamentComparisons(numItems);
+    const maxComparisons = calculateBinaryInsertionComparisons(numItems);
 
-    const outputDiv = document.getElementById('output');
-    outputDiv.innerHTML = `
-        <p><strong>Number of Items:</strong> ${numItems}&emsp;&emsp;&emsp;&emsp;<strong>Estimated Comparisons:</strong> ${numComparisons}</p>
-    `;
+    updateDisplay(numItems, maxComparisons);
 
-    // Initialize comparison queue
-    initializeComparisonQueue();
-
-    // Start the comparison process
-    startComparisons();
+    startInsertion();
 }
 
-// Function to initialize the comparison queue with item pairs
-function initializeComparisonQueue() {
-    comparisonQueue = [];
-    
-    // Generate all possible pairs of items
-    for (let i = 0; i < sortedItems.length; i++) {
-        for (let j = i + 1; j < sortedItems.length; j++) {
-            comparisonQueue.push([sortedItems[i], sortedItems[j]]);
-        }
-    }
-}
-
-// Function to start the comparison process
-function startComparisons() {
-    if (comparisonQueue.length === 0 || sortedItems.length <= 1) {
+// Start the insertion process
+function startInsertion() {
+    if (items.length === 0) {
         finishSorting();
         return;
     }
 
-    // Show the next pair in the comparison queue
-    const [item1, item2] = comparisonQueue.shift();
-    currentComparison = [item1, item2]; // Store the current comparison
+    currentItem = items.shift();
+    binaryInsert(currentItem);
+}
+
+// binary insertion
+function binaryInsert(item) {
+    if (sortedItems.length === 0) {
+        sortedItems.push(item);
+        startInsertion();
+        return;
+    }
+
+    left = 0;
+    right = sortedItems.length - 1;
+    compareNextItem(item);
+}
+
+// Compares the next item
+function compareNextItem(item) {
+    if (left > right) {
+        sortedItems.splice(left, 0, item);
+        startInsertion();
+        return;
+    }
+
+    const mid = Math.floor((left + right) / 2);
+    currentComparison = [item, sortedItems[mid]];
 
     const comparisonInterface = document.getElementById('comparisoninterface');
     comparisonInterface.innerHTML = `
-        <h3>Select your preference:</h3>
-        <button class="comparison" onclick="selectItem('${item1}')">${item1}</button>
-        <button class="comparison" onclick="selectItem('${item2}')">${item2}</button>
-        </br>
+        <h3>Which item do you prefer?</h3>
+        <button class="comparison" onclick="compareItems('${item}')" id="leftButton">${item}</button>
+        <button class="comparison" onclick="compareItems('${sortedItems[mid]}')" id="rightButton">${sortedItems[mid]}</button>
+        <br>
         <button class="undo" onclick="undoLastComparison()">Undo</button>
+        <p>Use ↔ arrow keys to choose, ↕ for undo</p>
     `;
 }
 
-// Function to handle the selection of an item during comparison
-function selectItem(selectedItem) {
+// Handle result
+function compareItems(selectedItem) {
     if (!currentComparison) return;
 
-    const [item1, item2] = currentComparison;
     comparisonsMade++;
 
-    // Save the current state to history for undo
+    // Save current state to history for undo
     history.push({
+        items: [...items],
         sortedItems: [...sortedItems],
-        comparisonQueue: [...comparisonQueue],
-        comparisonsMade: comparisonsMade,
-        currentComparison: currentComparison
+        comparisonsMade: comparisonsMade - 1,  
+        currentComparison: currentComparison,
+        left: left,
+        right: right,
+        currentItem: currentItem
     });
 
-    // Swap the items if necessary
-    if (selectedItem === item2) {
-        const index1 = sortedItems.indexOf(item1);
-        const index2 = sortedItems.indexOf(item2);
-        if (index1 !== -1 && index2 !== -1) {
-            [sortedItems[index1], sortedItems[index2]] = [sortedItems[index2], sortedItems[index1]];
-        }
+    const [item, comparedTo] = currentComparison;
+    const mid = sortedItems.indexOf(comparedTo);
+
+    if (selectedItem === item) {
+        right = mid - 1;
+    } else {
+        left = mid + 1;
     }
 
-    // Continue with the next comparison
-    currentComparison = null;
-    const outputDiv = document.getElementById('output');
-    outputDiv.innerHTML = `
-        <p><strong>Comparisons Made:</strong> ${comparisonsMade}</p>
-    `;
-
-    startComparisons();
+    updateDisplay();
+    compareNextItem(item);
 }
 
-// Function to undo the last comparison
-function undoLastComparison() {
-    if (history.length === 0) return;
+function updateDisplay(numItems, maxComparisons) {
+    const outputDiv = document.getElementById('output');
+    if (numItems !== undefined && maxComparisons !== undefined) {
+        outputDiv.innerHTML = `
+            <p><strong>Number of Items:</strong> ${numItems} &emsp; &emsp; &emsp; <strong>Maximum Comparisons:</strong> ${maxComparisons}</p>
+        `;
+    } else {
+        outputDiv.innerHTML = `
+            <p><strong>Comparisons Made:</strong> ${comparisonsMade}</p>
+        `;
+    }
+}
 
-    // Revert to the last saved state in history
+function undoLastComparison() {
+    if (sortingFinished || history.length === 0) return; // no undo if you're already done
+
     const lastState = history.pop();
+    items = lastState.items;
     sortedItems = lastState.sortedItems;
-    comparisonQueue = lastState.comparisonQueue;
     comparisonsMade = lastState.comparisonsMade;
     currentComparison = lastState.currentComparison;
+    left = lastState.left;
+    right = lastState.right;
+    currentItem = lastState.currentItem;
 
-    // Continue with the next comparison
-    startComparisons();
+    updateDisplay();
+    compareNextItem(currentItem);
 }
 
-// Function to finish the sorting process
+// Function to finish
 function finishSorting() {
+    sortingFinished = true; // Set the flag
+
     const comparisonInterface = document.getElementById('comparisoninterface');
-    comparisonInterface.innerHTML = ' ';
+    comparisonInterface.innerHTML = '';
 
     const outputDiv = document.getElementById('output');
     outputDiv.innerHTML += `
         <h3>Sorted List:</h3>
         <ul>${sortedItems.map(item => `<li>${item}</li>`).join('')}</ul>
-        <p><strong>Total Comparisons Made:</strong> ${comparisonsMade}</p>
     `;
 }
+
+// Event listener for key controls
+document.addEventListener('keydown', function (event) {
+    if (sortingFinished) return; // No controls if youre finished
+
+    switch (event.key) {
+        case 'ArrowLeft':
+            document.getElementById('leftButton')?.click();
+            break;
+        case 'ArrowRight':
+            document.getElementById('rightButton')?.click();
+            break;
+        case 'ArrowUp':
+        case 'ArrowDown':
+            undoLastComparison();
+            break;
+    }
+});
