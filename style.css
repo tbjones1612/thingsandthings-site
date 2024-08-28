@@ -27,6 +27,14 @@ body {
     background-color: rgb(55, 87, 80);
 }
 
+.sortification {
+    background-color: rgb(136, 74, 58);
+}
+
+.plantime {
+    background-color: rgb(59, 44, 61);
+}
+
 .container {
     width: 96vw;
     height: 96vh;
@@ -38,13 +46,16 @@ body {
 
 .box {
     background-color: var(--maincolor);
-    border-radius: 0px;
-    box-shadow: 10px 10px 0px var(--shadecolor);
+    border-radius: 1.5px;
     border: 5px solid var(--seccolor);
     padding: 15px 25px 15px 25px;
     margin: 0;
     overflow: auto;
     position: relative;
+    box-shadow: 10px 10px 0px var(--shadecolor),
+        0px 0px 10px 5px inset var(--shadecolor);
+    ;
+
 }
 
 .top-left {
@@ -73,9 +84,10 @@ body {
 /* General Text Formatting */
 
 h1,
-h2 {
+h2,
+h3 {
     margin: 0;
-    color: var(--seccolor)
+    color: var(--seccolor);
 }
 
 hr {
@@ -98,7 +110,7 @@ a {
 }
 
 .sitetitle:hover {
-    scale: 0.9; 
+    scale: 0.9;
     transition: 0.25s;
 }
 
@@ -166,6 +178,8 @@ textarea {
     font-size: 18px;
     height: auto;
     resize: vertical;
+    box-shadow:
+        0px 5px 5px rgba(0, 0, 0, 0.3)
 }
 
 /* Layout Responsive */
