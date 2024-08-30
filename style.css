@@ -1,10 +1,14 @@
 /* Global Theme */
 
 :root {
-    --maincolor: rgb(77, 73, 72);
+    --maincolor: rgb(73, 73, 73);
     --compcolor: rgb(127, 141, 144);
     --seccolor: rgb(237, 208, 173);
     --shadecolor: rgba(26, 26, 26, 0.25);
+    
+    --home-maincolor: rgb(55, 87, 80);
+    --sort-maincolor: rgb(136, 74, 58);
+    --plan-maincolor: rgb(59, 44, 61);
 }
 
 /* General Flex & Grid Formatting */
@@ -24,15 +28,15 @@ body {
 }
 
 .homepage {
-    background-color: rgb(55, 87, 80);
+    background-color: var(--home-maincolor);
 }
 
 .sortification {
-    background-color: rgb(136, 74, 58);
+    background-color: var(--sort-maincolor);
 }
 
 .plantime {
-    background-color: rgb(59, 44, 61);
+    background-color: var(--plan-maincolor);
 }
 
 .container {
@@ -79,6 +83,8 @@ body {
 .bottom-right {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
 }
 
 /* General Text Formatting */
@@ -164,11 +170,27 @@ button:active {
         0px 5px 5px rgba(0, 0, 0, 0.6) inset;
 }
 
+select {
+    background-color: var(--maincolor);
+    font-family: "Sanchez", Arial, sans-serif;
+    font-size: 18px;
+    color: var(--seccolor);
+    stroke: 3px var(--seccolor);
+}
+
+.schedule-container {
+    display: flexbox;
+    justify-content: center;
+    align-content: center;
+    margin: 20px;
+    position: relative;
+}
+
 /* Textboxes */
 
 textarea {
     width: 100%;
-    padding: 5px 0px 5px 0px;
+    padding: 5px;
     position: relative;
     border: 3px solid var(--seccolor);
     background-color: var(--compcolor);
@@ -180,6 +202,46 @@ textarea {
     resize: vertical;
     box-shadow:
         0px 5px 5px rgba(0, 0, 0, 0.3)
+}
+
+.time-input {
+    width: auto;
+    text-align: right;
+}
+
+input[type="text"] {
+    width: 50px;
+    background-color: var(--maincolor);
+    font-family: "Sanchez", Arial, sans-serif;
+    font-size: 18px;
+    color: var(--seccolor);
+    stroke: 3px var(--seccolor);
+}
+
+.schedule-container table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.schedule-container td, .schedule-container th {
+    border: 3px solid var(--seccolor);
+    padding: 8px;
+    text-align: center;
+}
+
+.schedule-container .unavailable {
+    background-color: var(--home-maincolor);
+}
+
+.schedule-container .available {
+    background-color: var(--compcolor);
+}
+
+.report-container {
+    justify-self: center;
+    align-self: center;
+    position: relative;
+    width: 50%;
 }
 
 /* Layout Responsive */

@@ -21,25 +21,65 @@
         </div>
 
         <div class="box top-right">
-            <h1>PlanTime (nonfunctional, WIP)</h1>
+            <h1>PlanTime (Work In Progress)</h1>
             <hr>
         </div>
 
         <div class="box bottom-left">
             <h2>Settings</h2>
             <hr>
-            
+            <h3><label for="user-id-select">User:</label>
+                <select name="user-id-select" id="user-id-select">
+                    <option value="UserID01">01</option>
+                </select>
+            </h3>
+            <br>
+            <h3>Hour Range</h3>
+            <form id="hour-range-form">
+                <input type="radio" id="24hrY" name="timerange" value="24hr">
+                <label for="24hrY">24-hour</label>
+                <input type="radio" id="7to7hrY" name="timerange" value="7to7" checked>
+                <label for="7to7hrY">7am-7pm</label>
+                <input type="radio" id="CustomhrY" name="timerange" value="custom">
+                <label for="CustomhrY">Custom</label>
+            </form>
+            <div id="custom-hour-container"></div>
+            <br>
+            <h3>Weekdays</h3>
+            <form id="weekday-range-form">
+                <input type="radio" id="7dayX" name="weekdayrange" value="7day">
+                <label for="7dayX">7-day</label>
+                <input type="radio" id="MtoFdayX" name="weekdayrange" value="MtoF" checked>
+                <label for="MtoFdayX">Mon-Fri</label>
+                <input type="radio" id="CustomdayX" name="weekdayrange" value="custom">
+                <label for="CustomdayX">Custom</label>
+            </form>
+            <div id="custom-day-container"></div>
+            <br>
+            <h3>Times Unavailable</h3>
+            <div id="unavailable-times-container">
+                <!-- Time inputs will be dynamically added here -->
+            </div>
+            <button id="apply-button">Apply</button>
         </div>
 
         <div class="box bottom-right">
-            <script src=""></script>
-
-            <div id="output"></div>
-            <div id="comparisoninterface"></div>
-
+            <div>
+                <h3>
+                    <form id="table-controls-form">
+                        <input type="checkbox" id="ShowAvailable" name="tablecontrols">
+                        <label for="ShowAvailable">Show Available</label>
+                        <input type="checkbox" id="CreateReport" name="tablecontrols">
+                        <label for="CreateReport">Create Report</label>
+                    </form>
+                </h3>
+            </div>
+            <div id="schedule-container" class="schedule-container"></div>
+            <div id="report-container" class="report-container"></div>
         </div>
-    
+
     </div>
+    <script src="plantime/plantime.js"></script>
 </body>
 
 </html>
