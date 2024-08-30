@@ -224,9 +224,28 @@ input[type="text"] {
 }
 
 .schedule-container td, .schedule-container th {
-    border: 3px solid var(--seccolor);
-    padding: 8px;
+    border: 1px solid var(--seccolor);
+    padding: 4px;
     text-align: center;
+}
+
+.schedule-container td.hour-start {
+    border-top: 3px solid var(--seccolor);
+}
+
+.schedule-container td.quarter-hour {
+    border-top: 1px dashed var(--seccolor);
+}
+
+.schedule-container td:first-child {
+    width: 80px;
+    font-weight: bold;
+}
+
+.schedule-container td:first-child.quarter-hour {
+    font-weight: normal;
+    font-size: 0.8em;
+    color: var(--compcolor);
 }
 
 .schedule-container .unavailable {

@@ -5,7 +5,6 @@ let endHour = 19;
 let unavailableTimes = {};
 
 // DOM Elements
-const userSelect = document.getElementById('user-id-select');
 const hourRangeForm = document.getElementById('hour-range-form');
 const weekdayRangeForm = document.getElementById('weekday-range-form');
 const customHourContainer = document.getElementById('custom-hour-container');
@@ -105,15 +104,29 @@ function generateSchedule() {
     });
     
     for (let hour = startHour; hour <= endHour; hour++) {
-        const row = table.insertRow();
-        const timeCell = row.insertCell();
-        timeCell.textContent = `${hour}:00`;
-        
-        selectedDays.forEach(day => {
-            const cell = row.insertCell();
-            cell.dataset.day = day;
-            cell.dataset.hour = hour;
-        });
+        for (let minute = 0; minute < 60; minute += 15) {
+            const row = table.insertRow();
+            const timeCell = row.insertCell();
+            if (minute === 0) {
+                timeCell.textContent = `${hour}:00`;
+                timeCell.classList.add('hour-start');
+            } else {
+                timeCell.textContent = `${hour}:${minute.toString().padStart(2, '0')}`;
+                timeCell.classList.add('quarter-hour');
+            }
+            
+            selectedDays.forEach(day => {
+                const cell = row.insertCell();
+                cell.dataset.day = day;
+                cell.dataset.hour = hour;
+                cell.dataset.minute = minute;
+                if (minute === 0) {
+                    cell.classList.add('hour-start');
+                } else {
+                    cell.classList.add('quarter-hour');
+                }
+            });
+        }
     }
     
     scheduleContainer.appendChild(table);
@@ -150,16 +163,18 @@ function applyUnavailableTimes() {
     cells.forEach(cell => {
         const day = cell.dataset.day;
         const hour = parseInt(cell.dataset.hour);
+        const minute = parseInt(cell.dataset.minute);
         
         if (unavailableTimes[day]) {
             unavailableTimes[day].forEach(time => {
-                const startHour = parseInt(time.start.split(':')[0]);
-                const endHour = parseInt(time.end.split(':')[0]);
-                const startMinute = parseInt(time.start.split(':')[1]);
-                const endMinute = parseInt(time.end.split(':')[1]);
+                const [startHour, startMinute] = time.start.split(':').map(Number);
+                const [endHour, endMinute] = time.end.split(':').map(Number);
                 
-                if ((hour > startHour || (hour === startHour && startMinute === 0)) && 
-                    (hour < endHour || (hour === endHour && endMinute > 0))) {
+                const cellTime = hour * 60 + minute;
+                const startTime = startHour * 60 + startMinute;
+                const endTime = endHour * 60 + endMinute;
+                
+                if (cellTime >= startTime && cellTime < endTime) {
                     cell.classList.add('unavailable');
                 }
             });
@@ -199,19 +214,21 @@ function createReport() {
         let start = null;
         
         for (let hour = startHour; hour <= endHour; hour++) {
-            const cell = document.querySelector(`td[data-day="${day}"][data-hour="${hour}"]`);
-            if (cell && !cell.classList.contains('unavailable')) {
-                if (start === null) start = hour;
-            } else {
-                if (start !== null) {
-                    availableTimes.push(`${start}:00-${hour}:00`);
-                    start = null;
+            for (let minute = 0; minute < 60; minute += 15) {
+                const cell = document.querySelector(`td[data-day="${day}"][data-hour="${hour}"][data-minute="${minute}"]`);
+                if (cell && !cell.classList.contains('unavailable')) {
+                    if (start === null) start = `${hour}:${minute.toString().padStart(2, '0')}`;
+                } else {
+                    if (start !== null) {
+                        availableTimes.push(`${start}-${hour}:${minute.toString().padStart(2, '0')}`);
+                        start = null;
+                    }
                 }
             }
         }
         
         if (start !== null) {
-            availableTimes.push(`${start}:00-${endHour + 1}:00`);
+            availableTimes.push(`${start}-${endHour + 1}:00`);
         }
         
         report += availableTimes.join(', ') + '\n';
