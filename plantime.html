@@ -61,21 +61,30 @@
                 <!-- Time inputs will be dynamically added here -->
             </div>
             <button id="apply-button">Apply</button>
+            <div class="imp-exp-rep-container">
+                <h3>Import</h3>
+                <textarea id="import-textarea" placeholder="Paste code here"></textarea>
+                <button id="import-apply">Apply</button>
+            </div>
+            <div class="imp-exp-rep-container">
+                <button id="create-report">Create Report</button>
+                <textarea id="report-textarea" readonly></textarea>
+            </div>
+            <div class="imp-exp-rep-container">
+                <button id="create-link">Create Link</button>
+                <textarea id="export-textarea" readonly></textarea>
+                <button id="copy-export">Copy</button>
+            </div>
         </div>
-
+        
         <div class="box bottom-right">
             <div>
                 <h3>
-                    <form id="table-controls-form">
-                        <input type="checkbox" id="ShowAvailable" name="tablecontrols">
-                        <label for="ShowAvailable">Show Available</label>
-                        <input type="checkbox" id="CreateReport" name="tablecontrols">
-                        <label for="CreateReport">Create Report</label>
-                    </form>
+                    <input type="checkbox" id="ShowAvailable" name="tablecontrols">
+                    <label for="ShowAvailable">Show Available</label>
                 </h3>
             </div>
             <div id="schedule-container" class="schedule-container"></div>
-            <div id="report-container" class="report-container"></div>
         </div>
 
     </div>

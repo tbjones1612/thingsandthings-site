@@ -227,14 +227,18 @@ input[type="text"] {
     border: 1px solid var(--seccolor);
     padding: 4px;
     text-align: center;
+    width: 15%;
 }
 
 .schedule-container td.hour-start {
+    border: 1px var(--seccolor);
+    border-style: dotted;
     border-top: 3px solid var(--seccolor);
 }
 
 .schedule-container td.quarter-hour {
-    border-top: 1px dashed var(--seccolor);
+    border-top: 1px var(--seccolor);
+    border-style: dotted;
 }
 
 .schedule-container td:first-child {
@@ -256,11 +260,13 @@ input[type="text"] {
     background-color: var(--compcolor);
 }
 
-.report-container {
+
+.unavailable-times-container,
+.imp-exp-rep-container {
     justify-self: center;
     align-self: center;
     position: relative;
-    width: 50%;
+    width: 95%;
 }
 
 /* Layout Responsive */

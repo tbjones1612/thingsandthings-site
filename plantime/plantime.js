@@ -13,6 +13,10 @@ const unavailableTimesContainer = document.getElementById('unavailable-times-con
 const applyButton = document.getElementById('apply-button');
 const showAvailableCheckbox = document.getElementById('ShowAvailable');
 const createReportCheckbox = document.getElementById('CreateReport');
+const createLinkCheckbox = document.getElementById('CreateLink');
+const exportTextbox = document.getElementById('export-textbox');
+const copyExportButton = document.getElementById('copy-export-button');
+const importTextbox = document.getElementById('import-textbox');
 const scheduleContainer = document.getElementById('schedule-container');
 
 // Event Listeners
@@ -21,6 +25,16 @@ weekdayRangeForm.addEventListener('change', handleWeekdayRangeChange);
 applyButton.addEventListener('click', generateSchedule);
 showAvailableCheckbox.addEventListener('change', toggleAvailableTimes);
 createReportCheckbox.addEventListener('change', createReport);
+createLinkCheckbox.addEventListener('change', handleCreateLink);
+copyExportButton.addEventListener('click', copyExportCode);
+window.addEventListener('load', initializePageLoad)
+
+function initializePageLoad() {
+    handleHourRangeChange('7to7');
+    handleWeekdayRangeChange('7day');
+    updateSelectedDays();
+    generateSchedule();
+}
 
 // Custom input for hour range
 function handleHourRangeChange(e) {
@@ -246,6 +260,139 @@ function createReport() {
     });
 }
 
+// Generate export code
+function handleCreateLink() {
+    if (createLinkCheckbox.checked) {
+        const exportCode = generateExportCode();
+        exportTextbox.value = exportCode;
+        exportTextbox.style.display = "block";
+        copyExportButton.style.display = "block";
+    } else {
+        exportTextbox.style.display = "none";
+        copyExportButton.style.display = "none";
+    }
+}
+
+function generateExportCode() {
+    let exportCode = "";
+    const user = "U01"; // Hardcoded for now, can be dynamic
+
+    // Generate the binary representation for the active weekdays
+    const activeWeekdays = getActiveWeekdaysBinary();
+    exportCode += activeWeekdays;
+
+    // Add the hour range
+    const hourRange = getHourRange();
+    exportCode += hourRange;
+
+    // Add the unavailable time blocks for each weekday
+    const unavailableTimes = getUnavailableTimes();
+    exportCode += unavailableTimes;
+
+    return exportCode;
+}
+
+function getActiveWeekdaysBinary() {
+    const days = ["M", "T", "W", "R", "F", "S", "N"];
+    let binaryString = "";
+
+    days.forEach(day => {
+        const checkbox = document.getElementById(`weekday-${day}`);
+        binaryString += checkbox && checkbox.checked ? "1" : "0";
+    });
+
+    return parseInt(binaryString, 2).toString(10).padStart(3, "0");
+}
+
+function getHourRange() {
+    const startHour = parseInt(document.getElementById("customStartHour").value || 7);
+    const endHour = parseInt(document.getElementById("customEndHour").value || 19);
+    return convertHourToCode(startHour) + convertHourToCode(endHour);
+}
+
+function convertHourToCode(hour) {
+    return hour < 10 ? hour.toString() : String.fromCharCode(87 + hour);
+}
+
+function getUnavailableTimes() {
+    const times = [];
+    const days = ["M", "T", "W", "R", "F", "S", "N"];
+
+    days.forEach(day => {
+        const timeBlocks = document.querySelectorAll(`.unavailable-time-${day}`);
+        timeBlocks.forEach(block => {
+            const startHour = parseInt(block.querySelector(".start-time").value.split(':')[0]);
+            const startMinute = parseInt(block.querySelector(".start-time").value.split(':')[1]);
+            const endHour = parseInt(block.querySelector(".end-time").value.split(':')[0]);
+            const endMinute = parseInt(block.querySelector(".end-time").value.split(':')[1]);
+
+            const startCode = convertHourToCode(startHour) + convertMinuteToCode(startMinute);
+            const endCode = convertHourToCode(endHour) + convertMinuteToCode(endMinute);
+
+            times.push(day + startCode + endCode);
+        });
+    });
+
+    return times.join("");
+}
+
+function convertMinuteToCode(minute) {
+    const codes = [0, 1, 2, 3, 4];
+    return codes[Math.floor(minute / 15)];
+}
+
+// Copy export code to clipboard
+function copyExportCode() {
+    exportTextbox.select();
+    document.execCommand("copy");
+    alert("Export code copied to clipboard");
+}
+
+// Import code
+function importCode() {
+    const importValue = importTextbox.value;
+    if (importValue) {
+        parseImportCode(importValue);
+    }
+}
+
+function parseImportCode(code) {
+    // Parse the binary weekday representation
+    const weekdayBinary = parseInt(code.slice(0, 3), 10).toString(2).padStart(7, "0");
+    const hourRange = code.slice(3, 5);
+    const timeBlocks = code.slice(5);
+
+    setActiveWeekdaysFromBinary(weekdayBinary);
+    setHourRangeFromCode(hourRange);
+    setUnavailableTimesFromCode(timeBlocks);
+}
+
+function setActiveWeekdaysFromBinary(binary) {
+    const days = ["M", "T", "W", "R", "F", "S", "N"];
+    days.forEach((day, index) => {
+        const checkbox = document.getElementById(`weekday-${day}`);
+        checkbox.checked = binary[index] === "1";
+    });
+}
+
+function setHourRangeFromCode(code) {
+    const startHour = convertCodeToHour(code[0]);
+    const endHour = convertCodeToHour(code[1]);
+
+    document.getElementById("customStartHour").value = startHour;
+    document.getElementById("customEndHour").value = endHour;
+}
+
+function convertCodeToHour(code) {
+    return isNaN(code) ? code.charCodeAt(0) - 87 : parseInt(code);
+}
+
+function setUnavailableTimesFromCode(timeBlocks) {
+    // Logic to set unavailable times based on the imported code
+    // Split the timeBlocks string into individual day/time segments
+}
+
 // Initialize the page
+initializePageLoad();
 updateUnavailableInputs();
 generateSchedule();
