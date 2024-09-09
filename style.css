@@ -5,7 +5,7 @@
     --compcolor: rgb(127, 141, 144);
     --seccolor: rgb(237, 208, 173);
     --shadecolor: rgba(26, 26, 26, 0.25);
-    
+
     --home-maincolor: rgb(55, 87, 80);
     --sort-maincolor: rgb(136, 74, 58);
     --plan-maincolor: rgb(59, 44, 61);
@@ -25,7 +25,9 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: #324641;
 }
+
 
 .homepage {
     background-color: var(--home-maincolor);
@@ -170,6 +172,15 @@ button:active {
         0px 5px 5px rgba(0, 0, 0, 0.6) inset;
 }
 
+button.plansetting {
+    height: 40px;
+    text-align: center;
+    margin: 5px;
+    padding: 5px 25px;
+    justify-self: left;
+    font-size: 20px;
+}
+
 select {
     background-color: var(--maincolor);
     font-family: "Sanchez", Arial, sans-serif;
@@ -184,6 +195,10 @@ select {
     align-content: center;
     margin: 20px;
     position: relative;
+}
+
+.ManualListEnter {
+    width: 95%;
 }
 
 /* Textboxes */
@@ -202,6 +217,28 @@ textarea {
     resize: vertical;
     box-shadow:
         0px 5px 5px rgba(0, 0, 0, 0.3)
+}
+
+.plancodetextbox {
+    height: 25px;
+    text-align: left;
+    width: 185px;
+    margin: 5px;
+    padding: 5px;
+    justify-self: left;
+    font-size: 20px;
+    resize: none;
+}
+
+.plancodebutton {
+    transform: translateY(-13px);
+    height: 40px;
+    text-align: center;
+    width: 100px;
+    margin: 0px;
+    padding: 5px;
+    justify-self: left;
+    font-size: 20px;
 }
 
 .time-input {
@@ -223,7 +260,8 @@ input[type="text"] {
     width: 100%;
 }
 
-.schedule-container td, .schedule-container th {
+.schedule-container td,
+.schedule-container th {
     border: 1px solid var(--seccolor);
     padding: 4px;
     text-align: center;

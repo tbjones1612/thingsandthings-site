@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sortification</title>
+    <title>PlanTime</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="box top-right">
-            <h1>PlanTime (Work In Progress)</h1>
+            <h1>PlanTime (Work In Progress, Nonfunctional)</h1>
             <hr>
         </div>
 
@@ -29,9 +29,9 @@
             <h2>Settings</h2>
             <hr>
             <h3><label for="user-id-select">User:</label>
-                <select name="user-id-select" id="user-id-select">
-                    <option value="UserID01">01</option>
-                </select>
+                <select id="user-select">
+                    <option value="01">User 01</option>
+                  </select>
             </h3>
             <br>
             <h3>Hour Range</h3>
@@ -60,21 +60,21 @@
             <div id="unavailable-times-container">
                 <!-- Time inputs will be dynamically added here -->
             </div>
-            <button id="apply-button">Apply</button>
+            <button id="apply-button" class="plansetting">Apply</button>
             <div class="imp-exp-rep-container">
-                <h3>Import</h3>
-                <textarea id="import-textarea" placeholder="Paste code here"></textarea>
-                <button id="import-apply">Apply</button>
+                <h3>Import/Export</h3>
+                <textarea class="plancodetextbox" id="import-textarea" placeholder="Paste code here"></textarea>
+                <button class="plancodebutton" id="import-button">Import</button>
             </div>
             <div class="imp-exp-rep-container">
-                <button id="create-report">Create Report</button>
-                <textarea id="report-textarea" readonly></textarea>
+                <textarea class="plancodetextbox"id="export-textarea" readonly placeholder="Export (read only)"></textarea>
+                <button class="plancodebutton" id="copy-export">Copy</button>
             </div>
             <div class="imp-exp-rep-container">
-                <button id="create-link">Create Link</button>
-                <textarea id="export-textarea" readonly></textarea>
-                <button id="copy-export">Copy</button>
+                <button id="create-report-button" class="plansetting">Generate Report</button>
+                <textarea  id="report-textarea" readonly></textarea>
             </div>
+            
         </div>
         
         <div class="box bottom-right">
