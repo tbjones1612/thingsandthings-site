@@ -24,12 +24,10 @@ body {
     width: 19vw;
     min-width: 480px;
     height: 50vh;
-    margin-top: 15vh;
-    margin-bottom: 10vh;
+    margin: 15vh calc(50vw - 290px);
     padding: 50px;
     border: var(--seccolor) 15px solid;
     border-radius: 50px;
-    margin-left: 30vw;
     box-shadow: 0px 10px 15px 0px var(--shadecolor);;
 }
 
@@ -66,7 +64,13 @@ button {
     font-family: "Outfit", Helvetica, sans-serif;
     padding: 5px 35px;
     margin: 10px 5px 5px 5px;
-    border: 3px white solid;;
+    border: 3px white solid;
+    transition: 0.5s;
+}
+
+button:hover {
+    transition: 0.5s;
+    border: 3px lightgray solid;
 }
 
 h1 {
