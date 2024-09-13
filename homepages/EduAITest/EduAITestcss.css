@@ -1,0 +1,99 @@
+:root {
+    --maincolor: rgb(58, 116, 63);
+    --seccolor: rgb(225, 207, 88);
+    --textcolor: rgb(0, 0, 0);
+    --shadecolor: rgba(0, 0, 0, 0.5);
+}
+
+body {
+    background-color: var(--maincolor);
+    font-family: "Outfit", Helvetica, sans-serif;
+    font-size: 150%;
+    color: var(--textcolor);
+    display: flex;
+    flex-direction: column;
+    align-content: column center;
+    justify-content: column center;
+    
+    margin: 0;
+    padding: 0;
+    height: 200vh;
+}
+
+.container {
+    width: 19vw;
+    min-width: 480px;
+    height: 50vh;
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+    padding: 50px;
+    border: var(--seccolor) 15px solid;
+    border-radius: 50px;
+    margin-left: 30vw;
+    box-shadow: 0px 10px 15px 0px var(--shadecolor);;
+}
+
+.loginbox {
+    background-color: var(--seccolor);
+    border: 10px black double;
+    justify-content: center;
+}
+
+.loginform {
+    margin: 0px 0px 0px 35px;
+}
+
+.logintype {
+    position: relative;
+    align-self: center;
+    padding-left: 75px;
+}
+
+.contentbox {
+    border: 15px var(--seccolor) outset;
+}
+
+input[type="text"] {
+    background-color: white;
+    border: 3px black solid;
+    width: 400px;
+    font-size: 28px;
+}
+
+button {
+    background-color: var(--maincolor);
+    color: white;
+    font-family: "Outfit", Helvetica, sans-serif;
+    padding: 5px 35px;
+    margin: 10px 5px 5px 5px;
+    border: 3px white solid;;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+hr {
+    border: 3px black dashed;
+}
+
+a {
+    margin: 0px;
+    color: white;
+}
+
+p {
+    color: white;
+    text-align: center;
+}
