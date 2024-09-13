@@ -89,6 +89,10 @@ body {
     flex-direction: column;
 }
 
+.homepagebox {
+    grid-column: span 2;
+}
+
 /* General Text Formatting */
 
 h1,

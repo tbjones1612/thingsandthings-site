@@ -1,0 +1,69 @@
+:root {
+    --textcolor: rgb(106, 216, 42);
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--textcolor);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0%;
+}
+
+.container {
+    filter: blur(0.5px);
+    position: absolute;
+    width: 19vw;
+    min-width: 480px;
+    height: 50vh;
+    margin-top: 20vh;
+    padding: 50px;
+    border: rgb(126, 126, 126) 15px groove;
+    border-radius: 50px;
+}
+
+.screen-over {
+    clip-path:inherit;
+    position: absolute;
+    border-radius: 50px;
+    width: calc(19vw - 10px);
+    min-width: 470px;
+    height: calc(50vh - 30px);
+    margin-top: calc(20vh + 10px);
+    padding: 65px;
+    box-shadow:
+        inset 25px 25px 15px 0px rgba(218, 218, 218, 0.144),
+        inset -25px -25px 15px 0px rgba(0, 0, 0, 0.603);
+    filter: blur(4px);
+    background-image:
+        repeating-linear-gradient(0deg,
+            #00000093 1rem,
+            #000000 1rem,
+            #aaaaaa2c 2rem);
+    background-size: 150vw 150vh;
+    animation: barberpole 3s linear infinite;
+}
+
+@keyframes barberpole {
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+a {
+    color: var(--textcolor);
+}
+
+hr {
+    color: var(--textcolor);
+}
+
+@media screen and (max-width: 650px) {
+    .screen-over,
+    .container {
+        width: 70vw;
+    }
+}
