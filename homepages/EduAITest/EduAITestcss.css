@@ -1,3 +1,4 @@
+/* Variables */
 :root {
     --maincolor: rgb(0 82 62);
     --seccolor: rgb(225 199 58);
@@ -10,203 +11,33 @@
     --shadecolor: rgba(0 0 0 / 0.3);
 }
 
-html {
-    padding: 0;
+/* Global Styles */
+html, body {
     margin: 0;
+    padding: 0;
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background-color: var(--maincolor);
+    color: var(--textcolorD);
     font-family: "Outfit", Helvetica, sans-serif;
     font-size: 150%;
-    color: var(--textcolorD);
+}
+
+/* Typography */
+h1, h2 {
     margin: 0;
     padding: 0;
-}
-
-.nav {
-    width: 250px;
-    height: max-content;
-    margin: 30px;
-    padding: 10px 0px;
-    border-radius: 30px;
-    position: fixed;
-    background-color: var(--shadecolor);
-    color: var(--textcolorL);
-    z-index: 50;
-    text-align: center;
-}
-
-.screenbox {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--maincolor);
-    box-shadow: 0 0 0 5px var(--textcolorL) inset;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.container {
-    padding: 50px;
-    border-radius: 50px;
-    box-shadow: 0px 10px 15px 0px var(--shadecolor);
-    
-}
-
-.loginbox {
-    display: flex;
-    flex-direction: column;
-    width: min(100% - 2rem, 600px);
-    margin-inline: auto;
-    margin: 15px;
-    background-color: var(--seccolor);
-    border: 10px var(--textcolorD) double;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 10px 15px 0px var(--shadecolor),
-        inset 0 0 15px rgba(0, 0, 0, 0.25);
-}
-
-.logintype {
-    text-align: center;
-}
-
-.loginform {
-    width: 75%;
-}
-
-.examselectbox {
-    width: min(100% - 2rem, 1600px);
-    margin-inline: auto;
-    margin: 25px;
-    background-color: var(--textcolorL);
-    border: 5px var(--seccolor) outset;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 10px 15px 0px var(--shadecolor),
-        inset 0 0 25px rgba(0, 0, 0, 0.35);
-}
-
-.examcardbox {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    margin: 0;
-    background-color: var(--menucolorL2);
-    max-height: 550px;
-    box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    padding: 20px;
-    overflow: scroll;
-}
-
-.taken:hover,
-.examcard {
-    background-color: var(--menucolorL1);
-    width: 190px;
-    height: 240px;
-    margin: 10px;
-    padding: 0px 10px;
-    box-shadow: 0 5px 5px var(--shadecolor);
-    border: 3px var(--textcolorD) solid;
-}
-
-.examcard:hover {
-    scale: 1.05;
-    cursor: pointer;
-    box-shadow: 0 2px 10px var(--shadecolor);
-    transition: 0.05s;
-}
-
-.taken {
-    opacity: 50%;
-}
-
-.taken:hover {
-    scale: 1;
-    cursor: default;
-    box-shadow: 0 5px 5px var(--shadecolor);
-}
-
-.examtakenlabel {
-    font-weight: bold;
-    text-decoration: wavy underline 2px var(--textcolorD);
-    text-align: center;
-    padding: 20px 0px;
-}
-
-input[type="text"] {
-    background-color: var(--textcolorL);
-    border: 3px var(--textcolorD) solid;
-    border-radius: 10px;
-    width: 100%;
-    font-size: 20px;
-    transition: 0.5s;
-    padding: 8px;
-}
-
-input[type="text"]:focus,
-input[type="text"]:hover {
-    transition: 0.5s;
-    box-shadow: 0px 5px 10px 0px var(--shadecolor);
-}
-
-button {
-    background-color: var(--maincolor);
-    color: var(--textcolorL);
-    border: 3px var(--textcolorL) solid;
-    border-radius: 20px;
-    font-family: "Outfit", Helvetica, sans-serif;
-    box-shadow: 0px 5px 10px 0px var(--shadecolor);
-    cursor: pointer;
-    padding: 5px 35px;
-    margin: 10px 5px 5px 5px;
-    transition: 0.5s;
-}
-
-button:hover {
-    background-color: var(--textcolorL);
-    color: var(--maincolor);
-    border: 3px var(--maincolor) solid;
-    box-shadow: 0px 5px 15px 0px var(--shadecolor);
-    transition: 0.5s;
-}
-
-button:focus {
-    background-color: var(--textcolorL);
-    color: var(--maincolor);
-    border: 3px var(--maincolor) solid;
-    box-shadow: 0px 5px 10px 0px var(--shadecolor);
-    transition: 0.5s;
 }
 
 h1 {
-    margin: 0;
-    padding: 0;
     text-align: center;
 }
 
-h2 {
-    margin: 0;
-    padding: 0;
-}
-
 h3 {
-    margin: 10px 0
-}
-
-hr {
-    width: 100%;
-    border: 3px var(--textcolorD) dashed;
+    margin: 10px 0;
 }
 
 p {
@@ -217,6 +48,170 @@ a {
     color: var(--textcolorL);
 }
 
+hr {
+    width: 100%;
+    border: 3px var(--textcolorD) dashed;
+}
+
+/* Layout Components */
+.nav {
+    position: fixed;
+    z-index: 50;
+    width: 250px;
+    height: max-content;
+    margin: 30px;
+    padding: 10px 0px;
+    background-color: var(--shadecolor);
+    border-radius: 30px;
+    color: var(--textcolorL);
+    text-align: center;
+}
+
+.screenbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: var(--maincolor);
+    box-shadow: 0 0 0 5px var(--textcolorL) inset;
+}
+
+.container {
+    padding: 50px;
+    border-radius: 50px;
+    box-shadow: 0px 10px 15px 0px var(--shadecolor);
+}
+
+/* Login Components */
+.loginbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: min(100% - 2rem, 600px);
+    margin: 15px auto;
+    background-color: var(--seccolor);
+    border: 10px var(--textcolorD) double;
+    box-shadow: 0px 10px 15px 0px var(--shadecolor),
+                inset 0 0 15px rgba(0, 0, 0, 0.25);
+}
+
+.logintype {
+    text-align: center;
+}
+
+.loginform {
+    width: 75%;
+}
+
+/* Exam Components */
+.examselectbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(100% - 2rem, 1600px);
+    margin: 25px auto;
+    background-color: var(--textcolorL);
+    border: 5px var(--seccolor) outset;
+    border-radius: 15px;
+    box-shadow: 0px 10px 15px 0px var(--shadecolor),
+                inset 0 0 25px rgba(0, 0, 0, 0.35);
+}
+
+.examcardbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-height: 550px;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--menucolorL2);
+    border-radius: 10px;
+    box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.25);
+    overflow: scroll;
+}
+
+.examcard, .taken:hover {
+    width: 190px;
+    height: 240px;
+    margin: 10px;
+    padding: 0px 10px;
+    background-color: var(--menucolorL1);
+    border: 3px var(--textcolorD) solid;
+    box-shadow: 0 5px 5px var(--shadecolor);
+}
+
+.examcard:hover {
+    scale: 1.05;
+    box-shadow: 0 2px 10px var(--shadecolor);
+    cursor: pointer;
+    transition: 0.05s;
+}
+
+.taken {
+    opacity: 50%;
+}
+
+.taken:hover {
+    scale: 1;
+    cursor: default;
+}
+
+.examtakenlabel {
+    padding: 20px 0px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: wavy underline 2px var(--textcolorD);
+}
+
+/* Form Elements */
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    background-color: var(--textcolorL);
+    border: 3px var(--textcolorD) solid;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: 0.5s;
+}
+
+input[type="text"]:focus,
+input[type="text"]:hover {
+    box-shadow: 0px 5px 10px 0px var(--shadecolor);
+}
+
+button {
+    margin: 10px 5px 5px 5px;
+    padding: 5px 35px;
+    background-color: var(--maincolor);
+    border: 3px var(--textcolorL) solid;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px 0px var(--shadecolor);
+    color: var(--textcolorL);
+    font-family: "Outfit", Helvetica, sans-serif;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+button:hover,
+button:focus {
+    background-color: var(--textcolorL);
+    border: 3px var(--maincolor) solid;
+    color: var(--maincolor);
+}
+
+button:hover {
+    box-shadow: 0px 5px 15px 0px var(--shadecolor);
+}
+
+/* Media Queries */
 @media screen and (max-width: 960px) {
     .examcard {
         width: 100%;
