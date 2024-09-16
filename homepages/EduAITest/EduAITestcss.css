@@ -1,8 +1,13 @@
 :root {
-    --maincolor: rgb(58, 116, 63);
-    --seccolor: rgb(225, 207, 88);
-    --textcolor: rgb(0, 0, 0);
-    --shadecolor: rgba(0, 0, 0, 0.3);
+    --maincolor: rgb( 145 182 187);
+    --seccolor: rgb(220 213 154);
+    --textcolorD: rgb(0 0 0);
+    --textcolorL: rgb(255, 255, 255);
+    --menucolorL1: rgb(250, 250, 250);
+    --menucolorL2: rgb(215, 215, 215);
+    --menucolorD1: rgb(50, 50, 50);
+    --menucolorD2: rgb(45, 45, 45);
+    --shadecolor: rgba(0 0 0 / 0.3);
 }
 
 html {
@@ -14,7 +19,7 @@ body {
     background-color: var(--maincolor);
     font-family: "Outfit", Helvetica, sans-serif;
     font-size: 150%;
-    color: var(--textcolor);
+    color: var(--textcolorD);
     margin: 0;
     padding: 0;
 }
@@ -27,7 +32,7 @@ body {
     border-radius: 30px;
     position: fixed;
     background-color: var(--shadecolor);
-    color: white;
+    color: var(--textcolorL);
     z-index: 50;
     text-align: center;
 }
@@ -38,7 +43,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: var(--maincolor);
-    box-shadow: 0 0 0 5px white inset;
+    box-shadow: 0 0 0 5px var(--textcolorL) inset;
 
     display: flex;
     flex-direction: row;
@@ -60,7 +65,7 @@ body {
     margin-inline: auto;
     margin: 15px;
     background-color: var(--seccolor);
-    border: 10px black double;
+    border: 10px var(--textcolorD) double;
     align-items: center;
     justify-content: center;
     box-shadow: 0px 10px 15px 0px var(--shadecolor),
@@ -78,10 +83,10 @@ body {
 .examselectbox {
     width: min(100% - 2rem, 1600px);
     margin-inline: auto;
-    margin: 15px;
-    background-color: white;
-    border: 10px var(--seccolor) outset;
-    border-radius: 25px;
+    margin: 25px;
+    background-color: var(--textcolorL);
+    border: 5px var(--seccolor) outset;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,13 +94,14 @@ body {
         inset 0 0 25px rgba(0, 0, 0, 0.35);
 }
 
-.examselector {
+.examcardbox {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     margin: 0;
+    background-color: var(--menucolorL2);
     max-height: 550px;
     box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -103,13 +109,15 @@ body {
     overflow: scroll;
 }
 
+.taken:hover,
 .examcard {
+    background-color: var(--menucolorL1);
     width: 190px;
     height: 240px;
     margin: 10px;
     padding: 0px 10px;
     box-shadow: 0 5px 5px var(--shadecolor);
-    border: 3px black solid;
+    border: 3px var(--textcolorD) solid;
 }
 
 .examcard:hover {
@@ -126,18 +134,19 @@ body {
 .taken:hover {
     scale: 1;
     cursor: default;
+    box-shadow: 0 5px 5px var(--shadecolor);
 }
 
 .examtakenlabel {
     font-weight: bold;
-    text-decoration: wavy underline 2px black;
+    text-decoration: wavy underline 2px var(--textcolorD);
     text-align: center;
     padding: 20px 0px;
 }
 
 input[type="text"] {
-    background-color: white;
-    border: 3px black solid;
+    background-color: var(--textcolorL);
+    border: 3px var(--textcolorD) solid;
     border-radius: 10px;
     width: 100%;
     font-size: 20px;
@@ -153,8 +162,8 @@ input[type="text"]:hover {
 
 button {
     background-color: var(--maincolor);
-    color: white;
-    border: 3px white solid;
+    color: var(--textcolorL);
+    border: 3px var(--textcolorL) solid;
     border-radius: 20px;
     font-family: "Outfit", Helvetica, sans-serif;
     box-shadow: 0px 5px 10px 0px var(--shadecolor);
@@ -165,7 +174,7 @@ button {
 }
 
 button:hover {
-    background-color: white;
+    background-color: var(--textcolorL);
     color: var(--maincolor);
     border: 3px var(--maincolor) solid;
     box-shadow: 0px 5px 15px 0px var(--shadecolor);
@@ -173,7 +182,7 @@ button:hover {
 }
 
 button:focus {
-    background-color: white;
+    background-color: var(--textcolorL);
     color: var(--maincolor);
     border: 3px var(--maincolor) solid;
     box-shadow: 0px 5px 10px 0px var(--shadecolor);
@@ -197,7 +206,7 @@ h3 {
 
 hr {
     width: 100%;
-    border: 3px black dashed;
+    border: 3px var(--textcolorD) dashed;
 }
 
 p {
@@ -205,7 +214,7 @@ p {
 }
 
 a {
-    color: white;
+    color: var(--textcolorL);
 }
 
 @media screen and (max-width: 960px) {
