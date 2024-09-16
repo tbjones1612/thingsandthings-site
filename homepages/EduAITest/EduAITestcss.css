@@ -114,7 +114,7 @@ hr {
     justify-content: center;
     align-items: center;
     width: min(100% - 2rem, 1600px);
-    margin: 25px auto;
+    margin: 25px 15px;
     background-color: var(--textcolorL);
     border: 5px var(--seccolor) outset;
     border-radius: 15px;
@@ -160,7 +160,6 @@ hr {
 }
 
 .taken:hover {
-    scale: 1;
     cursor: default;
 }
 
@@ -213,7 +212,7 @@ button:hover {
 
 /* Media Queries */
 @media screen and (max-width: 960px) {
-    .examcard {
+    .examcard, .taken:hover {
         width: 100%;
         height: fit-content;
     }
