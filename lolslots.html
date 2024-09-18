@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thingsandthings.lol | lol-slots</title>
+    <link rel="stylesheet" href="lol-slots/lolslotscss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="titlebox"> <a href="index.html" style="color: white;"><h1>thingsandthings.lol</h1></a>
+    </div>
+    <div class="slot-machine">
+        <div class="reelbox">
+            <div class="reel" id="reel1"></div>
+            <div class="reel" id="reel2"></div>
+            <div class="reel" id="reel3"></div>
+            <div class="reel" id="reel4"></div>
+            <div class="reel" id="reel5"></div>
+        </div>
+        <button onclick="spin()"><h1>Spin!</h1></button>
+        <div class="toggleoptions">
+            <label><form autocomplete="off">
+                <input type="checkbox" id="auto-spin-checkbox">
+                Auto Spin</form>
+            </label>
+        </div>
+    </div>
+    <script src="./lol-slots/slots.js"></script>
+</body>
+
+</html>
