@@ -16,6 +16,16 @@ body {
   background-color: var(--maincolor)
 }
 
+#floating-symbols-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .titlebox {
   position: fixed;
   align-self: flex-start;
@@ -26,6 +36,7 @@ body {
   transform: translateY(-10px);
   box-shadow: inset 12px 12px 20px 0 var(--shadecolor),
   inset -8px -8px 18px 0 var(--tintcolor);
+  z-index: 3;
 }
 
 .titlebox:hover h1 {
@@ -39,6 +50,7 @@ body {
   box-shadow: 12px 12px 16px 0 var(--shadecolor),
     -8px -8px 12px 0 var(--tintcolor);
   border-radius: 50px;
+  z-index: 3;
 }
 
 .reelbox {
@@ -71,6 +83,7 @@ body {
   align-items: center;
   font-size: 48px;
   cursor: default;
+  text-shadow: 0px 3px 7px var(--shadecolor);
 }
 
 .symbol:hover {
@@ -121,6 +134,18 @@ button:disabled {
   display: flex;
   justify-content: center;
   padding-top: 10px;
+}
+
+.floating-symbol {
+  position: fixed;
+  font-size: 48px;
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 2.5s ease-out;
+}
+
+.floating-symbol.fade-out {
+  opacity: 0;
 }
 
 @media screen and (max-width: 800px) {

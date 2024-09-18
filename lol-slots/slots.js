@@ -42,7 +42,7 @@ function spin() {
         const strip = reel.querySelector('.strip');
         const symbolCount = strip.children.length;
 
-        strip.innerHTML = ''; 
+        strip.innerHTML = '';
 
         const startingSymbols = reelStates[index];
         startingSymbols.forEach(symbol => {
@@ -75,6 +75,7 @@ function spin() {
 
     setTimeout(() => {
         document.querySelector('button').disabled = false;
+        displayFloatingSymbols();
     }, spinDuration + 100);
 }
 
@@ -90,13 +91,41 @@ function updateReelState(strip, reelIndex, startIndex) {
     reelStates[reelIndex] = visibleSymbols;
 }
 
+function displayFloatingSymbols() {
+    const visibleSymbols = reelStates.flat();
+    const container = document.getElementById('floating-symbols-container');
+
+    container.innerHTML = '';
+
+    visibleSymbols.forEach(symbol => {
+        const floatingSymbol = document.createElement('div');
+        floatingSymbol.className = 'floating-symbol';
+        floatingSymbol.textContent = symbol;
+
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+
+        floatingSymbol.style.left = `${left}%`;
+        floatingSymbol.style.top = `${top}%`;
+
+        container.appendChild(floatingSymbol);
+
+        setTimeout(() => {
+            floatingSymbol.classList.add('fade-out');
+            setTimeout(() => {
+                floatingSymbol.remove();
+            }, 2500);
+        }, 50);
+    });
+}
+
 let autoSpinInterval;
 
 document.querySelector('#auto-spin-checkbox').addEventListener('change', function () {
     if (this.checked) {
         autoSpinInterval = setInterval(() => {
             document.querySelector('button').click();
-        }, 3000);
+        }, 2000);
     } else {
         clearInterval(autoSpinInterval);
     }
