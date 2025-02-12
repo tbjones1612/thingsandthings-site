@@ -1,9 +1,9 @@
 // Global 
 
-let items = []; // init
-let comparisonsMade = 0; // init
-let sortedItems = []; // init
-let currentComparison = null; // init
+let items = [];
+let comparisonsMade = 0;
+let sortedItems = [];
+let currentComparison = null;
 let history = []; // prev states
 let left, right; // binary search bounds
 let currentItem = null; // self explanitory
@@ -17,13 +17,13 @@ function calculateBinaryInsertionComparisons(numItems) {
 // Starts the process
 function sortAlgo() {
     const inputText = document.getElementById('man-item-input').value;
-    items = [...new Set(inputText.split('\n').filter(item => item.trim() !== ''))]; // gets unique  items
-    sortedItems = [];  // clears list
+    items = [...new Set(inputText.split('\n').filter(item => item.trim() !== ''))];
+    sortedItems = [];
 
     comparisonsMade = 0;
     history = [];
     currentItem = null;
-    sortingFinished = false; // clears flag
+    sortingFinished = false;
 
     const numItems = items.length;
     const maxComparisons = calculateBinaryInsertionComparisons(numItems);

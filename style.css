@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+
 /* Global Theme */
 
 :root {
@@ -9,6 +13,14 @@
     --home-maincolor: rgb(40, 77, 60);
     --sort-maincolor: rgb(136, 74, 58);
     --plan-maincolor: rgb(59, 44, 61);
+
+    --electionmap-button: rgb(72, 61, 85);
+    --electionmap-button2: rgb(65, 56, 75);
+    --electionmap-button3: rgb(52, 44, 60);
+
+    --EduAlly-button: rgb(0, 82, 62);
+    --EduAlly-button2: rgb(3, 92, 70);
+    --EduAlly-button3: rgb(2, 74, 56);
 }
 
 /* General Flex & Grid Formatting */
@@ -98,7 +110,6 @@ h1,
 h2,
 h3 {
     margin: 0;
-    color: var(--seccolor);
 }
 
 hr {
@@ -175,29 +186,12 @@ button:active {
         0px 5px 5px rgba(0, 0, 0, 0.6) inset;
 }
 
-button.plansetting {
-    height: 40px;
-    text-align: center;
-    margin: 5px;
-    padding: 5px 25px;
-    justify-self: left;
-    font-size: 20px;
-}
-
 select {
     background-color: var(--maincolor);
     font-family: "Sanchez", Arial, sans-serif;
     font-size: 18px;
     color: var(--seccolor);
     stroke: 3px var(--seccolor);
-}
-
-.schedule-container {
-    display: flexbox;
-    justify-content: center;
-    align-content: center;
-    margin: 20px;
-    position: relative;
 }
 
 .ManualListEnter {
@@ -220,94 +214,6 @@ textarea {
     resize: vertical;
     box-shadow:
         0px 5px 5px rgba(0, 0, 0, 0.3)
-}
-
-.plancodetextbox {
-    height: 25px;
-    text-align: left;
-    width: 185px;
-    margin: 5px;
-    padding: 5px;
-    justify-self: left;
-    font-size: 20px;
-    resize: none;
-}
-
-.plancodebutton {
-    transform: translateY(-13px);
-    height: 40px;
-    text-align: center;
-    width: 100px;
-    margin: 0px;
-    padding: 5px;
-    justify-self: left;
-    font-size: 20px;
-}
-
-.time-input {
-    width: auto;
-    text-align: right;
-}
-
-input[type="text"] {
-    width: 50px;
-    background-color: var(--maincolor);
-    font-family: "Sanchez", Arial, sans-serif;
-    font-size: 18px;
-    color: var(--seccolor);
-    stroke: 3px var(--seccolor);
-}
-
-.schedule-container table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.schedule-container td,
-.schedule-container th {
-    border: 1px solid var(--seccolor);
-    padding: 4px;
-    text-align: center;
-    width: 15%;
-}
-
-.schedule-container td.hour-start {
-    border: 1px var(--seccolor);
-    border-style: dotted;
-    border-top: 3px solid var(--seccolor);
-}
-
-.schedule-container td.quarter-hour {
-    border-top: 1px var(--seccolor);
-    border-style: dotted;
-}
-
-.schedule-container td:first-child {
-    width: 80px;
-    font-weight: bold;
-}
-
-.schedule-container td:first-child.quarter-hour {
-    font-weight: normal;
-    font-size: 0.8em;
-    color: var(--compcolor);
-}
-
-.schedule-container .unavailable {
-    background-color: var(--home-maincolor);
-}
-
-.schedule-container .available {
-    background-color: var(--compcolor);
-}
-
-
-.unavailable-times-container,
-.imp-exp-rep-container {
-    justify-self: center;
-    align-self: center;
-    position: relative;
-    width: 95%;
 }
 
 /* Layout Responsive */
@@ -342,4 +248,68 @@ input[type="text"] {
         grid-column: auto;
         grid-row: auto;
     }
+}
+
+button.electionmap {
+    background-color: none;
+    background: linear-gradient(to bottom, var(--electionmap-button), var(--electionmap-button2));
+    box-shadow: 0px 3px 1px var(--shadecolor),
+        0px 1px 1px rgba(255, 255, 255, 0.1) inset;
+    border: 0;
+    border-radius: 15px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 1rem;
+    transition: 0.1s;
+    cursor: pointer;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+}
+
+button.electionmap:hover {
+    background: linear-gradient(to bottom, var(--electionmap-button), var(--electionmap-button3));
+    box-shadow: 0px 3px 1px var(--shadecolor) inset,
+        0px 1px 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(2px);
+    transition: 0.1s;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+}
+
+button.electionmap:active {
+    background: linear-gradient(to bottom, var(--electionmap-button2), var(--electionmap-button3));
+    box-shadow: 0px 3px 1px var(--shadecolor) inset,
+        0px 1px 1px rgba(255, 255, 255, 0.1);
+    transition: 0.1s;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+}
+
+button.EduAlly {
+    background: linear-gradient(to bottom, var(--EduAlly-button2), var(--EduAlly-button), var(--EduAlly-button3));
+    border: 0;
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+    border-radius: 25px;
+    box-shadow:  0px 5px 5px rgba(0, 0, 0, 0.25), inset 0px 1px 1px rgba(255, 255, 255, 0.15);
+    transition: 0.1s;
+}
+
+button.EduAlly:hover {
+    cursor: pointer;
+    background: linear-gradient(to bottom, var(--EduAlly-button2), var(--EduAlly-button));
+    box-shadow:  0px 5px 5px rgba(0, 0, 0, 0.25), inset 0px 1px 1px rgba(255, 255, 255, 0.15);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+}
+
+button.EduAlly:active {
+    transition: 0.1s;
+    transform: translateY(1px);
+    background: linear-gradient(to bottom, var(--EduAlly-button), var(--EduAlly-button3));
+    box-shadow:  inset 0px 5px 5px rgba(0, 0, 0, 0.25), 0px 1px 1px rgba(255, 255, 255, 0.15);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
 }
