@@ -75,7 +75,7 @@ function compareNextItem(item) {
         <button class="comparison" onclick="compareItems('${sortedItems[mid]}')" id="rightButton">${sortedItems[mid]}</button>
         <br>
         <button class="undo" onclick="undoLastComparison()">Undo</button>
-        <p>Use ↔ arrow keys to choose, ↕ for undo</p>
+        <p>Click, or use ↔ arrow keys to choose, ↕ for undo</p>
     `;
 }
 
@@ -113,7 +113,7 @@ function updateDisplay(numItems, maxComparisons) {
     const outputDiv = document.getElementById('output');
     if (numItems !== undefined && maxComparisons !== undefined) {
         outputDiv.innerHTML = `
-            <p><strong>Number of Items:</strong> ${numItems} &emsp; &emsp; &emsp; <strong>Maximum Comparisons:</strong> ${maxComparisons}</p>
+            <p><strong>Number of List Items:</strong> ${numItems} &emsp; &emsp; &emsp; <strong>Maximum Comparisons:</strong> ${maxComparisons}</p>
         `;
     } else {
         outputDiv.innerHTML = `

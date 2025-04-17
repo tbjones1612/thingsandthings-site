@@ -1,61 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>thingsandthings.lol</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+</head>
+
+<body class="home">
     <div class="container">
-      <div class="title">
-        <h1>thingsandthings.lol</h1>
-      </div>
-      <div class="header">
-        <h1>Home</h1>
-        <button id="theme-toggle">Toggle Theme</button>
-      </div>
-      <div class="nav">
-        <h3>Check out my projects!</h3>
-        <hr />
-        <a href="https://github.com/tbjones1612"
-          ><button>
-            <h1>Github</h1>
-          </button></a
-        >
-        <hr />
-        <a href="https://electionmap.lol"
-          ><button class="electionmap">
-            <h2>ElectionMap.lol</h2>
-          </button></a
-        >
-        <a
-          href="https://github.com/orgs/SUNY-Brockport-ACM-Student-Chapter/repositories"
-          ><button class="EduAlly">
-            <h2>EduAlly</h2>
-          </button></a
-        >
-        <a href="sortification.html"
-          ><button class="Sort">
-            <h2>Sortification</h2>
-          </button></a
-        >
-      </div>
-      <div class="content">
-        <h2> ( Thanks for checking this out! ) </h2>
-            <h1> \/ </h1>
-            <h1> ¯\_(ツ)_/¯ </h1>
-            <div class="linkdesc">
+
+        <div class="box top-left">
+            <a href="./index.html">
+                <h1 class="sitetitle">thingsandthings.lol</h1>
+            </a>
+        </div>
+
+        <div class="box top-right">
+            <h1>Home</h1>
+            <hr>
+        </div>
+
+        <div class="box bottom-left">
+            <h3>Check out my projects!</h3>
+            <hr />
+            <a href="sortification.html"><button class="Sort">
+                    <h2>Sortification</h2>
+                </button>
+            </a>
+            <br>
+            <a href="https://electionmap.lol"><button class="electionmap">
+                    <h2>ElectionMap.lol</h2>
+                </button>
+            </a>
+            <br>
+            <a href="https://github.com/orgs/SUNY-Brockport-ACM-Student-Chapter/repositories"><button class="EduAlly">
+                    <h2>EduAlly</h2>
+                </button>
+            </a>
+            <br>
+            <a href="https://github.com/tbjones1612"><button class="GitLink">
+                    <p>Github Profile
+                    <p>
+                </button>
+            </a>
+        </div>
+
+        <div class="box bottom-right">
+            <h2>Thanks for checking this out!</h2>
+            <hr>
+            <h3>Sortification</h3>
+            <p>
+                Sort an entered list by user preferences — great for making ordered playlists!
+            </p>
             <h3>ElectionMap</h3>
-            <p>Collaboration with <a href="https://github.com/jessebeach50"
-                    style="text-decoration: underline;">jessebeach50</a>, inferface for US election prediction models!
+            <p>
+                Collaboration with
+                <a href="https://github.com/jessebeach50" style="text-decoration: underline;">jessebeach50</a>,
+                interface for US election prediction models!
             </p>
             <h3>EduAlly (ACM Chapter)</h3>
-            <p>Building and AI-integrated personal assessment tool. Leading the frontend team.</p>
-            <h3>Sortification</h3>
-            <p>Sort an entered list by user preferences, great for making ordered playlists!</p>
+            <p>
+                Building an AI-integrated personal assessment tool. Leading the frontend team.
+            </p>
         </div>
-      </div>
     </div>
-  </body>
+</body>
+
 </html>

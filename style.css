@@ -9,10 +9,28 @@
     --compcolor: rgb(127, 141, 144);
     --seccolor: rgb(237, 208, 173);
     --shadecolor: rgba(26, 26, 26, 0.25);
+
+    --home-maincolor: rgb(40, 77, 60);
+    --sort-maincolor: rgb(136, 74, 58);
+    --plan-maincolor: rgb(59, 44, 61);
+
+    --electionmap-button: rgb(72, 61, 85);
+    --electionmap-button2: rgb(65, 56, 75);
+    --electionmap-button3: rgb(52, 44, 60);
+
+    --EduAlly-button: rgb(0, 82, 62);
+    --EduAlly-button2: rgb(3, 92, 70);
+    --EduAlly-button3: rgb(2, 74, 56);
+
+    --git-button: rgb(1, 4, 9);
+    --git-button2: rgb(61, 68, 77);
+    --git-button3: rgb(145, 152, 161);
+
 }
 
 /* General Flex & Grid Formatting */
 body {
+    background-color: rgb(136, 74, 58);
     color: var(--seccolor);
     font-family: "Sanchez", Arial, sans-serif;
     font-size: 18px;
@@ -23,12 +41,21 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: #324641;
+}
+
+
+.homepage {
+    background-color: var(--home-maincolor);
 }
 
 .sortification {
-    background-color: rgb(136, 74, 58);
+    background-color: var(--sort-maincolor);
 }
 
+.plantime {
+    background-color: var(--plan-maincolor);
+}
 
 .container {
     width: 96vw;
@@ -226,4 +253,98 @@ textarea {
         grid-column: auto;
         grid-row: auto;
     }
+}
+
+button.electionmap {
+    background-color: none;
+    background: linear-gradient(to bottom, var(--electionmap-button), var(--electionmap-button2));
+    box-shadow: 0px 3px 1px var(--shadecolor),
+        0px 1px 1px rgba(255, 255, 255, 0.1) inset;
+    border: 0;
+    border-radius: 15px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 1rem;
+
+    cursor: pointer;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+    padding: 13px 15% 7px 15%;
+    transition: 0.1s;
+}
+
+button.electionmap:hover {
+    background: linear-gradient(to bottom, var(--electionmap-button), var(--electionmap-button3));
+    box-shadow: 0px 3px 1px var(--shadecolor) inset,
+        0px 1px 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(2px);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+    transition: 0.1s;
+}
+
+button.electionmap:active {
+    background: linear-gradient(to bottom, var(--electionmap-button2), var(--electionmap-button3));
+    box-shadow: 0px 3px 1px var(--shadecolor) inset,
+        0px 1px 1px rgba(255, 255, 255, 0.1);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+    transition: 0.1s;
+}
+
+button.EduAlly {
+    background: linear-gradient(to bottom, var(--EduAlly-button2), var(--EduAlly-button), var(--EduAlly-button3));
+    border: 0;
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+    border-radius: 25px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25), inset 0px 1px 1px rgba(255, 255, 255, 0.15);
+    transition: 0.1s;
+}
+
+button.EduAlly:hover {
+    cursor: pointer;
+    background: linear-gradient(to bottom, var(--EduAlly-button2), var(--EduAlly-button));
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25), inset 0px 1px 1px rgba(255, 255, 255, 0.15);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+}
+
+button.EduAlly:active {
+    transition: 0.1s;
+    transform: translateY(1px);
+    background: linear-gradient(to bottom, var(--EduAlly-button), var(--EduAlly-button3));
+    box-shadow: inset 0px 5px 5px rgba(0, 0, 0, 0.25), 0px 1px 1px rgba(255, 255, 255, 0.15);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+}
+
+button.GitLink {
+    background-color: var(--git-button);
+    border: 3px solid var(--git-button2);
+    font-size: 1rem;
+    font-family: 'Verdana', sans-serif;
+    font-weight: 100;
+    -webkit-text-fill-color: var(--git-button3);
+    text-shadow: none;
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 10px;
+}
+
+.GitLink p {
+    margin: 0;
+}
+
+button.GitLink:hover {
+    cursor: pointer;
+    box-shadow: none;
+    background-color: #15191F;
+}
+
+button.GitLink:active {
+    box-shadow: none;
+    background-color: #1A1E25;
 }
