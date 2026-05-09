@@ -272,6 +272,59 @@ button.electionmap {
     transition: 0.1s;
 }
 
+button.Simpledeck {
+    position: relative;
+    background-color: #000;
+    border: 0;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 400;
+    text-shadow: none;
+    box-shadow: none;
+    transition: box-shadow 0.15s ease;
+}
+
+button.Simpledeck::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(90deg, #fff 0 18px, transparent 18px 28px) top left / 100% 2px no-repeat,
+        repeating-linear-gradient(90deg, #fff 0 18px, transparent 18px 28px) bottom left / 100% 2px no-repeat,
+        repeating-linear-gradient(0deg, #fff 0 18px, transparent 18px 28px) top left / 2px 100% no-repeat,
+        repeating-linear-gradient(0deg, #fff 0 18px, transparent 18px 28px) top right / 2px 100% no-repeat;
+}
+
+button.Simpledeck:hover {
+    -webkit-text-fill-color: #fff;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+button.Simpledeck:hover::before {
+    background:
+        linear-gradient(#fff, #fff) top left / 100% 2px no-repeat,
+        linear-gradient(#fff, #fff) bottom left / 100% 2px no-repeat,
+        linear-gradient(#fff, #fff) top left / 2px 100% no-repeat,
+        linear-gradient(#fff, #fff) top right / 2px 100% no-repeat;
+}
+
+button.Simpledeck:active {
+    -webkit-text-fill-color: #fff;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+button.Simpledeck:active::before {
+    background:
+        linear-gradient(#fff, #fff) top left / 100% 2px no-repeat,
+        linear-gradient(#fff, #fff) bottom left / 100% 2px no-repeat,
+        linear-gradient(#fff, #fff) top left / 2px 100% no-repeat,
+        linear-gradient(#fff, #fff) top right / 2px 100% no-repeat;
+}
+
 button.electionmap:hover {
     background: linear-gradient(to bottom, var(--electionmap-button), var(--electionmap-button3));
     box-shadow: 0px 3px 1px var(--shadecolor) inset,
