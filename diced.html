@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diced</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="diced">
+    <div class="container diced-container">
+
+        <header class="box diced-header">
+            <a href="./index.html">
+                <h1 class="sitetitle">thingsandthings.lol</h1>
+            </a>
+            <a class="diced-title-link" href="./index.html">
+                <h1>Diced</h1>
+            </a>
+        </header>
+
+        <main class="diced-main">
+            <section class="diced-tool" aria-label="Diced image converter">
+                <div class="diced-controls">
+                    <label class="diced-file">
+                        <input id="diced-upload" type="file" accept="image/*">
+                        <span>Choose Image</span>
+                    </label>
+
+                    <label class="diced-scale">
+                        <span>Dice Scale</span>
+                        <input id="diced-scale" type="range" min="10" max="80" value="40">
+                        <output id="diced-scale-value" for="diced-scale">40</output>
+                    </label>
+
+                    <label class="diced-bg">
+                        <span>BG:</span>
+                        <input id="diced-bg" type="checkbox">
+                    </label>
+
+                    <label class="diced-con">
+                        <span>CON:</span>
+                        <button id="diced-contrast" class="diced-con-control" type="button" aria-label="Contrast: medium">MD</button>
+                    </label>
+
+                    <button id="diced-download" class="diced-action" type="button" disabled>Download</button>
+                </div>
+
+                <div class="diced-canvas-wrap">
+                    <canvas id="diced-canvas" aria-label="Diced image preview" hidden></canvas>
+                    <p id="diced-empty">Choose an image</p>
+                </div>
+            </section>
+        </main>
+
+    </div>
+    <div id="diced-preview" class="diced-preview" aria-hidden="true">
+        <button id="diced-preview-close" class="diced-preview-close" type="button" aria-label="Close preview">X</button>
+        <img id="diced-preview-image" alt="Large Diced preview">
+    </div>
+    <script src="./diced/test-dice-data.js"></script>
+    <script src="./diced/diced.js"></script>
+</body>
+
+</html>
