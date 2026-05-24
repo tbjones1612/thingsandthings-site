@@ -26,18 +26,18 @@ const contrastFactors = {
 };
 
 const diceGradient = [
-    { value: 1, fill: "#000", pip: "#fff" },
-    { value: 2, fill: "#000", pip: "#fff" },
-    { value: 3, fill: "#000", pip: "#fff" },
-    { value: 4, fill: "#000", pip: "#fff" },
-    { value: 5, fill: "#000", pip: "#fff" },
-    { value: 6, fill: "#000", pip: "#fff" },
-    { value: 6, fill: "#fff", pip: "#000" },
-    { value: 5, fill: "#fff", pip: "#000" },
-    { value: 4, fill: "#fff", pip: "#000" },
-    { value: 3, fill: "#fff", pip: "#000" },
-    { value: 2, fill: "#fff", pip: "#000" },
-    { value: 1, fill: "#fff", pip: "#000" },
+    { value: 1, fill: "rgb(0, 0, 0)", pip: "rgb(255, 255, 255)" },
+    { value: 2, fill: "rgb(0, 0, 0)", pip: "rgb(255, 255, 255)" },
+    { value: 3, fill: "rgb(0, 0, 0)", pip: "rgb(255, 255, 255)" },
+    { value: 4, fill: "rgb(0, 0, 0)", pip: "rgb(255, 255, 255)" },
+    { value: 5, fill: "rgb(0, 0, 0)", pip: "rgb(255, 255, 255)" },
+    { value: 6, fill: "rgb(0, 0, 0)", pip: "rgb(255, 255, 255)" },
+    { value: 6, fill: "rgb(255, 255, 255)", pip: "rgb(0, 0, 0)" },
+    { value: 5, fill: "rgb(255, 255, 255)", pip: "rgb(0, 0, 0)" },
+    { value: 4, fill: "rgb(255, 255, 255)", pip: "rgb(0, 0, 0)" },
+    { value: 3, fill: "rgb(255, 255, 255)", pip: "rgb(0, 0, 0)" },
+    { value: 2, fill: "rgb(255, 255, 255)", pip: "rgb(0, 0, 0)" },
+    { value: 1, fill: "rgb(255, 255, 255)", pip: "rgb(0, 0, 0)" },
 ];
 
 const pipLayouts = {
@@ -126,7 +126,7 @@ function renderDicedImage() {
     canvas.width = columns * dieSize;
     canvas.height = rows * dieSize;
 
-    ctx.fillStyle = bgInput.checked ? "#fff" : "#000";
+    ctx.fillStyle = bgInput.checked ? "rgb(255, 255, 255)" : "rgb(0, 0, 0)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     for (let row = 0; row < rows; row += 1) {
@@ -228,7 +228,7 @@ function loadDefaultImage() {
         sourceImage = image;
         renderDicedImage();
     });
-    image.src = typeof DEFAULT_DICE_IMAGE_SRC === "string" ? DEFAULT_DICE_IMAGE_SRC : "./diced/test_dice.png";
+    image.src = typeof DEFAULT_DICE_IMAGE_SRC === "string" ? DEFAULT_DICE_IMAGE_SRC : "./test_dice.png";
 }
 
 loadDefaultImage();

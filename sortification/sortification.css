@@ -1,0 +1,41 @@
+select {
+    background-color: var(--maincolor);
+    color: var(--seccolor);
+    font-family: "Sanchez", Arial, sans-serif;
+    font-size: 18px;
+    stroke: 3px var(--seccolor);
+}
+
+.ManualListEnter {
+    width: 95%;
+}
+
+textarea {
+    background-color: var(--compcolor);
+    border: 3px solid var(--seccolor);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    color: var(--seccolor);
+    font-family: "Sanchez", Arial, sans-serif;
+    font-size: 18px;
+    height: auto;
+    padding: 5px;
+    position: relative;
+    resize: vertical;
+    text-align: center;
+    width: 100%;
+}
+
+button.comparison {
+    border-radius: 10px;
+    font-size: 28px;
+    height: 250px;
+    padding: 0;
+    width: 300px;
+}
+
+button.undo {
+    font-size: 20px;
+    height: 50px;
+    padding: 0;
+    width: 100px;
+}

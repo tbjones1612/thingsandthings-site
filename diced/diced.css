@@ -1,0 +1,471 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap");
+
+body.diced {
+    align-items: flex-start;
+    background-color: rgb(0, 0, 0);
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    display: flex;
+    font-family: "Playfair Display", Georgia, serif;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 8px 0;
+    text-align: center;
+}
+
+.diced *,
+.diced *::before,
+.diced *::after {
+    box-sizing: border-box;
+}
+
+.diced h1,
+.diced h2,
+.diced h3,
+.diced p {
+    margin: 0;
+}
+
+.diced a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.diced .sitetitle {
+    transition: 0.25s;
+}
+
+.diced .sitetitle:hover {
+    scale: 0.9;
+    transition: 0.25s;
+}
+
+.diced-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    min-height: 0;
+    width: 96vw;
+}
+
+.diced .box {
+    background-color: rgb(0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 12px;
+    box-shadow: none;
+    margin: 0;
+    overflow: auto;
+    padding: 15px 25px;
+    position: relative;
+}
+
+.diced-header {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    justify-content: space-between;
+}
+
+.diced-title-link {
+    color: rgb(255, 255, 255);
+}
+
+.diced-title-link h1 {
+    font-weight: 600;
+}
+
+.diced-main {
+    display: block;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    min-height: 0;
+}
+
+.diced-tool {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    min-height: 0;
+}
+
+.diced-controls {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+}
+
+.diced-file input {
+    height: 1px;
+    opacity: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.diced-file span,
+.diced-action {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 12px;
+    box-shadow: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    -webkit-text-fill-color: rgb(0, 0, 0);
+    line-height: 1;
+    margin: 0;
+    padding: 10px 18px 13px;
+    text-shadow: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.diced-file span:hover,
+.diced-action:hover:not(:disabled),
+.diced-action:active:not(:disabled) {
+    background-color: rgb(0, 0, 0);
+    box-shadow: none;
+    color: rgb(255, 255, 255);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    text-shadow: none;
+}
+
+.diced-action:hover:disabled,
+.diced-action:active:disabled {
+    background-color: rgb(255, 255, 255);
+    box-shadow: none;
+    color: rgb(0, 0, 0);
+    -webkit-text-fill-color: rgb(0, 0, 0);
+    text-shadow: none;
+}
+
+.diced-action:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.diced-scale,
+.diced-bg,
+.diced-con {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.diced-scale input {
+    accent-color: rgb(255, 255, 255);
+    cursor: pointer;
+    width: min(34vw, 220px);
+}
+
+.diced-scale output {
+    min-width: 2ch;
+}
+
+.diced-bg input {
+    appearance: none;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    cursor: pointer;
+    height: 22px;
+    margin: 0;
+    width: 22px;
+}
+
+.diced-bg input:checked {
+    background-color: rgb(255, 255, 255);
+}
+
+.diced-con-control {
+    background-color: rgb(0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    box-shadow: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    height: 32px;
+    line-height: 1;
+    margin: 0;
+    padding: 0 0 3px;
+    text-align: center;
+    text-shadow: none;
+    width: 32px;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+}
+
+.diced-con-control:hover,
+.diced-con-control:active {
+    background-color: rgb(255, 255, 255);
+    box-shadow: none;
+    color: rgb(0, 0, 0);
+    text-shadow: none;
+    -webkit-text-fill-color: rgb(0, 0, 0);
+}
+
+.diced-canvas-wrap {
+    align-items: center;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 12px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    min-height: 0;
+    overflow: hidden;
+    padding: 18px;
+}
+
+#diced-canvas {
+    cursor: zoom-in;
+    display: block;
+    height: auto;
+    image-rendering: pixelated;
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+}
+
+#diced-canvas[hidden] {
+    display: none;
+}
+
+#diced-empty {
+    font-size: clamp(1.75rem, 5vw, 3.5rem);
+    font-weight: 600;
+    margin: 0;
+}
+
+.diced-preview {
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.72);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    opacity: 0;
+    padding: 36px;
+    pointer-events: none;
+    position: fixed;
+    transition: opacity 0.18s ease;
+    z-index: 20;
+}
+
+.diced-preview[aria-hidden="false"] {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.diced-preview img {
+    background-color: rgb(0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 12px;
+    cursor: zoom-out;
+    display: block;
+    image-rendering: pixelated;
+    max-height: 88vh;
+    max-width: 92vw;
+}
+
+.diced-preview-close {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 999px;
+    box-shadow: none;
+    color: rgb(0, 0, 0);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    height: 42px;
+    line-height: 1;
+    margin: 0;
+    padding: 0 0 4px;
+    position: fixed;
+    right: 24px;
+    text-shadow: none;
+    top: 24px;
+    width: 42px;
+    -webkit-text-fill-color: rgb(0, 0, 0);
+}
+
+.diced-preview-close:hover,
+.diced-preview-close:active {
+    background-color: rgb(0, 0, 0);
+    box-shadow: none;
+    color: rgb(255, 255, 255);
+    text-shadow: none;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+}
+
+.diced-preview-open {
+    overflow: hidden;
+}
+
+@media screen and (max-width: 700px) {
+    body.diced {
+        height: 100dvh;
+        min-height: 100dvh;
+        overflow: hidden;
+        padding: 6px 0;
+    }
+
+    .diced-container {
+        display: grid;
+        gap: 8px;
+        grid-template-rows: auto minmax(0, 1fr);
+        height: 100%;
+        min-height: 0;
+        width: calc(100vw - 12px);
+    }
+
+    .diced-header {
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        min-height: 50px;
+        padding: 6px 12px;
+    }
+
+    .diced-header>a:first-child {
+        display: none;
+    }
+
+    .diced-title-link h1 {
+        align-items: center;
+        display: inline-flex;
+        font-size: clamp(2rem, 11vw, 3rem);
+        font-weight: 600;
+        gap: 0.35em;
+        line-height: 1;
+        text-decoration: none;
+    }
+
+    .diced-title-link h1::before {
+        background:
+            radial-gradient(circle 0.055em at 28% 28%, rgb(0, 0, 0) 98%, transparent 100%),
+            radial-gradient(circle 0.055em at 50% 50%, rgb(0, 0, 0) 98%, transparent 100%),
+            radial-gradient(circle 0.055em at 72% 72%, rgb(0, 0, 0) 98%, transparent 100%),
+            rgb(255, 255, 255);
+        border-radius: 20%;
+        content: "";
+        display: inline-block;
+        height: 0.52em;
+        width: 0.52em;
+    }
+
+    .diced-title-link h1::after {
+        background:
+            radial-gradient(circle 0.055em at 28% 28%, rgb(0, 0, 0) 98%, transparent 100%),
+            radial-gradient(circle 0.055em at 72% 28%, rgb(0, 0, 0) 98%, transparent 100%),
+            radial-gradient(circle 0.055em at 50% 50%, rgb(0, 0, 0) 98%, transparent 100%),
+            radial-gradient(circle 0.055em at 28% 72%, rgb(0, 0, 0) 98%, transparent 100%),
+            radial-gradient(circle 0.055em at 72% 72%, rgb(0, 0, 0) 98%, transparent 100%),
+            rgb(255, 255, 255);
+        border-radius: 20%;
+        content: "";
+        display: inline-block;
+        height: 0.48em;
+        width: 0.48em;
+    }
+
+    .diced-tool {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: minmax(0, 1fr) auto auto auto;
+        height: 100%;
+        min-height: 0;
+    }
+
+    .diced-controls {
+        display: contents;
+    }
+
+    .diced-canvas-wrap {
+        border: 0;
+        border-radius: 0;
+        grid-column: 1 / 3;
+        grid-row: 1;
+        min-height: 0;
+        padding: 0;
+    }
+
+    .diced-file {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: end;
+    }
+
+    .diced-action {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: start;
+    }
+
+    .diced-scale {
+        grid-column: 1 / 3;
+        grid-row: 3;
+        justify-content: center;
+    }
+
+    .diced-bg {
+        grid-column: 1;
+        grid-row: 4;
+        justify-content: end;
+    }
+
+    .diced-con {
+        grid-column: 2;
+        grid-row: 4;
+        justify-content: start;
+    }
+
+    .diced-file span,
+    .diced-action {
+        border-radius: 10px;
+        font-size: 0.95rem;
+        padding: 7px 12px 10px;
+    }
+
+    .diced-scale,
+    .diced-bg,
+    .diced-con {
+        font-size: 0.95rem;
+        gap: 8px;
+    }
+
+    .diced-scale input {
+        width: min(50vw, 210px);
+    }
+
+    .diced-bg input,
+    .diced-con-control {
+        height: 28px;
+        width: 28px;
+    }
+
+    .diced-con-control {
+        font-size: 0.78rem;
+        padding-bottom: 2px;
+    }
+
+    #diced-canvas {
+        max-height: 100%;
+        max-width: 100%;
+    }
+}
